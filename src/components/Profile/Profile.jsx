@@ -1,5 +1,6 @@
 import React from 'react';
 import classes from './Profile.module.css';
+import MyPosts from './MyPosts/MyPosts.jsx'
 
 const Profile = () => {
   return <div className={classes.content}>
@@ -8,12 +9,7 @@ const Profile = () => {
     <img width='200' height='200' src='https://cdn.jpegmini.com/user/images/slider_puffin_before_mobile.jpg' />
     <div>description</div>
   </div>
-  <div>My posts</div>
-  <div>New posts</div>
-  <div className={classes.posts}>
-    <div className={classes.item}>post 1</div>
-    <div className={classes.item}>post 2</div>
-  </div>
+  <MyPosts />
 </div>
 }
 
