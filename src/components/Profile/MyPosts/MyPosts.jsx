@@ -2,13 +2,17 @@ import React from 'react';
 import Post from './Post/Post.jsx'
 import classes from './MyPosts.module.css';
 
-const MyPosts = () => {
+const MyPosts = ({postData}) => {
   return (
   <div>My posts
-    <div>New posts</div> 
+    <div>
+      <form action="">
+        <textarea name="comment" id="comment" cols="50" rows="10"></textarea> <br />
+        <button type="submit">Отправить</button>  
+      </form>  
+    </div> 
     <div className={classes.posts}>
-      <Post text="first comment"/>
-      <Post text="second comment"/>
+    {postData.map(({id, text, likeCount}) => <Post text={text} likeCount={likeCount}/>)}
     </div>
   </div>
   )

@@ -1,0 +1,21 @@
+.dialogs {
+  display: grid;
+  grid-template-columns: 2fr 10fr;
+}
+
+.list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.aside {
+  padding: 10px;
+}
+
+.conversation {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-right: 30px;
+}
