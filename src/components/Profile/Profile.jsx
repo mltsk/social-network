@@ -3,10 +3,10 @@ import classes from './Profile.module.css';
 import MyPosts from './MyPosts/MyPosts.jsx'
 import ProfileInfo from './ProfileInfo/ProfieInfo';
 
-const Profile = ({postData}) => {
+const Profile = ({state: {posts, newPostValue}}) => {
   return <div className={classes.content}>
     <ProfileInfo />
-    <MyPosts postData={postData} />
+    <MyPosts posts={posts} newPostValue={newPostValue}/>
   </div>
 }
 
