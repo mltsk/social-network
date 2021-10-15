@@ -1,16 +1,15 @@
 import React from 'react';
-import classes from './Post.module.css';
+import s from './Post.module.css';
 
-const Post = ({text, likeCount}) => {
+const Post = (props) => {
   return (
-    <div className={classes.container}>
-      <div className={classes.wrapper}>
-        <img className={classes.avatar} width="50" height='50' src="https://www.meme-arsenal.com/memes/36b78c8b7cd957e082f53148b74787ea.jpg" alt="Аватар" />
-        <div className={classes.item}>{text}</div>
+    <div className={s.item}>
+      <img src='https://movies4maniacs.liberty.me/wp-content/uploads/sites/1218/2015/09/avatarsucks.jpg' />
+        { props.message }
+          <div>
+        <span>like</span> { props.likesCount }
       </div>
-      <div>Likes: {likeCount}</div>
     </div>
-      
   )
 }
 

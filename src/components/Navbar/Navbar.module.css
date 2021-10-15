@@ -1,23 +1,14 @@
 .nav {
-  grid-area: n;
-  background-color: burlywood;
-  padding: 20px;
+    grid-area: n;
+    background-color: burlywood;
+    padding: 20px;
 }
 
-.item {
-  /* color: white; */
+.item a {
+    color: white;
+    text-decoration: none;
 }
 
-.list {
-  padding: 0;
-  list-style: none;
-}
-
-.link {
-  color: white;
-  text-decoration: none;
-}
-
-.active {
-  color: goldenrod;
+.item a.activeLink {
+    color: gold;
 }

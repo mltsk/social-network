@@ -1,13 +1,18 @@
 import React from 'react';
-import classes from './Profile.module.css';
-import MyPosts from './MyPosts/MyPosts.jsx'
-import ProfileInfo from './ProfileInfo/ProfieInfo';
+import s from './Profile.module.css';
+import MyPosts from './MyPosts/MyPosts';
+import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
-const Profile = ({state: {posts, newPostValue}}) => {
-  return <div className={classes.content}>
-    <ProfileInfo />
-    <MyPosts posts={posts} newPostValue={newPostValue}/>
-  </div>
+const Profile = (props) => {
+
+    return (
+        <div>
+            <ProfileInfo />
+            <MyPosts posts={props.profilePage.posts}
+                     newPostText={props.profilePage.newPostText}
+                     dispatch={props.dispatch} />
+        </div>
+    )
 }
 
 export default Profile;
