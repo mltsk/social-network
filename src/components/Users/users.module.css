@@ -3,3 +3,24 @@
     height: 100px;
     border-radius: 50%;
 }
+
+.paginationList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.paginationList li { 
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.paginationItem {
+    margin-right: 5px;
+}
+
+.activePage {
+    font-weight: bold;
+}

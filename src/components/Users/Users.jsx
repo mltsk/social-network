@@ -5,13 +5,36 @@ import userPhoto from './../../assets/images/images.png';
 
 class Users extends React.Component {
     componentDidMount() {
-        axios.get('https://social-network.samuraijs.com/api/1.0/users')
-            .then(res => this.props.setUsers(res.data.items));
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
+            .then(res => {
+                this.props.setUsers(res.data.items)
+                this.props.setTotalUsersCount(res.data.totalCount)
+            });
     }
-
+    handelOnClickPage = (page) => {
+        this.props.setCurrentPage(page);
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.pageSize}`)
+        .then(res => {
+            this.props.setUsers(res.data.items)
+        });
+    }
     render() {
+        const pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
+        const pages = [];
+        for (let i = 1; i <= pagesCount; i++) {
+            pages.push(i)
+        }
         return (
             <div>
+                <div className={styles.pagination}>
+                    <ul className={styles.paginationList}>
+                        {pages.map(page => <li
+                            onClick={ () => this.handelOnClickPage(page) }
+                            className={this.props.currentPage === page
+                                && styles.activePage
+                            } key={page}>{page}</li>)}
+                    </ul>
+                </div>
                 {
                     this.props.users.map(u => <div key={u.id}>
                         <span>
