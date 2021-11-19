@@ -1,28 +1,14 @@
 import React from 'react';
 import Users from './Users'
 import { connect } from 'react-redux';
-import { follow, setCurrentPage, setTotalUsersCount, setUsers, toggleIsFetching, unfollow, toggleFollowingProgress } from '../../redux/users-reducer';
+import { follow, setTotalUsersCount, unfollow, toggleFollowingProgress, getUsers } from '../../redux/users-reducer';
 import Preloader from '../common/Preloader/Preloader.jsx';
-import usersAPI from '../../api/api';
 class UsersContainer extends React.Component {
     componentDidMount() {
-        this.props.toggleIsFetching(true);
-
-        usersAPI.getUsers(this.props.currentPage, this.props.pageSize)
-            .then(data => {
-                this.props.toggleIsFetching(false);
-                this.props.setUsers(data.items)
-                this.props.setTotalUsersCount(data.totalCount)
-            });
+        this.props.getUsers(this.props.currentPage, this.props.pageSize);
     }
-    handelOnClickPage = (page) => {
-        this.props.setCurrentPage(page);
-        this.props.toggleIsFetching(true);
-        usersAPI.getUsers(page, this.props.pageSize)
-            .then(data => {
-                this.props.toggleIsFetching(false);
-                this.props.setUsers(data.items)
-            });
+    handelOnClickPage = (currentPage) => {
+        this.props.getUsers(currentPage, this.props.pageSize);
     }
     render() {
         return <>
@@ -34,7 +20,6 @@ class UsersContainer extends React.Component {
                 unfollow={this.props.unfollow}
                 follow={this.props.follow}
                 handelOnClickPage={this.handelOnClickPage}
-                toggleFollowingProgress={this.props.toggleFollowingProgress}
                 followingInProgress={this.props.followingInProgress}
             />
         </>
@@ -53,5 +38,5 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, {
-    follow, unfollow, setUsers, setTotalUsersCount, setCurrentPage, toggleIsFetching, toggleFollowingProgress
+    follow, unfollow, setTotalUsersCount, toggleFollowingProgress, getUsers
 })(UsersContainer);

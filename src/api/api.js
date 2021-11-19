@@ -14,15 +14,22 @@ const usersAPI = {
             withCredentials: true
         }).then(res => res.data)
     },
-    follow(id) {
-        return instance.post(`follow/${id}`)
+    follow(userId) {
+        return instance.post(`follow/${userId}`)
             .then(res => res.data.resultCode);
     },
-    unfollow(id) {
-        return instance.delete(`follow/${id}`)
+    unfollow(userId) {
+        return instance.delete(`follow/${userId}`)
             .then(res => res.data.resultCode);
-    }
-
+    },
+    getProfile(userId) {
+        return instance.get(`profile/${userId}`)
+            .then(res => res.data);
+    },
+    getAuthUser() {
+        return instance.get(`auth/me`)
+            .then(res => res.data);
+    },
 }
 
 export default usersAPI;
