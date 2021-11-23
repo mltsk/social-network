@@ -24,7 +24,6 @@ const profileReducer = (state = initState, action) => {
                 message: action.newPostText,
                 likesCount: 0
             };
-            debugger
             const posts = [...state.posts];
             posts.push(newPost);
             return { ...state, posts, newPostText: ''}
